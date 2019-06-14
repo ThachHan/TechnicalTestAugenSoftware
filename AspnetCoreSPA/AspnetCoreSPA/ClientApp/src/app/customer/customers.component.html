@@ -1,0 +1,42 @@
+<div class="conatiner" style="padding-top:20px;">
+  <div class="col-sm-5" style="padding-top:20px;padding-bottom:20px;">
+    <input class="form-control" type="text" placeholder="Search......." [(ngModel)]="filter">
+  </div>
+</div>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>STT</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Company Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Post</th>
+      <th>Phone 1</th>
+      <th>Phone 2</th>
+      <th>Email</th>
+      <th>Website</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of _allCustomer | async|filter:filter| paginate: { itemsPerPage: 6, currentPage: p }">
+      <td>{{customer.id}}</td>
+      <td>{{customer.fistName}}</td>
+      <td>{{customer.lastName}}</td>
+      <td>{{customer.companyName}}</td>
+      <td>{{customer.address}}</td>
+      <td>{{customer.city}}</td>
+      <td>{{customer.state}}</td>
+      <td>{{customer.post}}</td>
+      <td>{{customer.phone1}}</td>
+      <td>{{customer.phone2}}</td>
+      <td>{{customer.email}}</td>
+      <td>{{customer.website}}</td>
+    </tr>
+  </tbody>
+  <ul class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </ul>
+</table>  
